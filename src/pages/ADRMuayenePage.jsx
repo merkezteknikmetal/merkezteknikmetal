@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import SEO from '../components/SEO';
 
 const ADRMuayenePage = () => {
   const [showCertificate, setShowCertificate] = useState(false);
@@ -7,6 +8,13 @@ const ADRMuayenePage = () => {
 
   return (
     <div className="pt-20 min-h-screen bg-gray-100">
+      <SEO
+        title="ADR Muayene Merkezi - T9 Belgesi, Ara Muayene, Periyodik Muayene | Merkez Teknik Metal"
+        description="TSE yetkili ADR muayene merkezi. T9 belgesi, ara muayene (3 yıl), periyodik muayene (6 yıl) hizmetleri. Gerekli evraklar ve fiyat listesi. Randevu için iletişime geçin."
+        keywords="ADR muayene merkezi, T9 belgesi, ara muayene 3 yıl, periyodik muayene 6 yıl, TSE araç kontrol merkezi, ADR evraklar, muayene fiyat listesi, randevu"
+        url="/adr-muayene"
+        image="/adr-truck.jpg"
+      />
       {/* Hero Section - Industrial Style */}
       <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 text-white py-20 border-b-4 border-orange-500">
         <div className="absolute inset-0 opacity-5">

@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const HizmetlerPage = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="Hizmetlerimiz - ADR Muayene, T9 Belgesi, Ara ve Periyodik Muayene | Merkez Teknik Metal"
+        description="ADR araç muayene hizmetleri: T9 belgesi, ara muayene, periyodik muayene ve tamirat hizmetleri. TSE yetkili muayene merkezi olarak profesyonel hizmet sunuyoruz."
+        keywords="ADR hizmetleri, T9 belgesi, ara muayene, periyodik muayene, ADR tamirat, tadilat, muayene hizmetleri, TSE yetkili hizmetler"
+        url="/hizmetler"
+        image="/adr-truck.jpg"
+      />
       {/* Hero Section */}
       <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 text-white py-12 border-b-4 border-orange-500">
         <div className="absolute inset-0 opacity-5" style={{

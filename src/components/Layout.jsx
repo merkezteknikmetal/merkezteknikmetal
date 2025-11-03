@@ -2,10 +2,12 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import FloatingCTA from './FloatingCTA';
 import PageTransition from './PageTransition';
+import StructuredData from './StructuredData';
 
 const Layout = () => {
   return (
     <div className="font-montserrat">
+      <StructuredData />
       <Navbar />
       <FloatingCTA />
       <PageTransition>

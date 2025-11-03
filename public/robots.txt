@@ -1,0 +1,15 @@
+# robots.txt for Merkez Teknik Metal
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://merkezteknikmetal.com/sitemap.xml
+
+# Disallow specific paths (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay
+Crawl-delay: 1
+

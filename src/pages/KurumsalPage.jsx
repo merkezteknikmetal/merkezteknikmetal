@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+import SEO from '../components/SEO';
 
 const KurumsalPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -70,6 +71,13 @@ const KurumsalPage = () => {
 
   return (
     <div className="pt-20">
+      <SEO
+        title="Kurumsal - Merkez Teknik Metal | Hakkımızda, Vizyon, Misyon, Değerler"
+        description="Merkez Teknik Metal olarak TSE yetkilendirmeli ADR araç muayene merkezi. Vizyon, misyon ve değerlerimiz ile sektörde öncü konumdayız. Belgelerimiz ve sertifikalarımız hakkında bilgi alın."
+        keywords="kurumsal, hakkımızda, vizyon, misyon, değerler, TSE belgesi, ISO belgeleri, ADR muayene merkezi, şirket profili"
+        url="/kurumsal"
+        image="/yetki belgesi.jpg"
+      />
       {/* Hero Section */}
       <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 text-white py-12 border-b-4 border-orange-500">
         <div className="absolute inset-0 opacity-5" style={{

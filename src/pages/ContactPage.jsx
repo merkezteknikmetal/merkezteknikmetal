@@ -1,6 +1,15 @@
+import SEO from '../components/SEO';
+
 const ContactPage = () => {
   return (
     <div className="pt-20 bg-gray-100">
+      <SEO
+        title="İletişim - Merkez Teknik Metal | ADR Muayene Randevu ve Bilgi"
+        description="ADR muayene randevusu ve bilgi için iletişime geçin. Dörtyol, Hatay'da hizmet veren TSE yetkili muayene merkezi. Telefon: +90 542 182 22 26"
+        keywords="iletişim, randevu, adres, telefon, email, Dörtyol, Hatay, ADR muayene randevu, iletişim bilgileri"
+        url="/iletisim"
+        image="/mtmLOGO.png"
+      />
       {/* Hero Section - Compact */}
       <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 text-white py-8 border-b-4 border-orange-500">
         <div className="absolute inset-0 opacity-5">
