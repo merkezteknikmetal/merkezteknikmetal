@@ -14,21 +14,21 @@ const MediaSlider = () => {
       src: '/resimler/slider1.svg',
       alt: 'Merkez Teknik Metal - Görsel 1'
     },
+  //  {
+  //    type: 'image',
+  //      src: '/resimler/slider2.svg',
+  //    alt: 'Merkez Teknik Metal - Görsel 2'
+  //  },
+ //   {
+ //     type: 'image',
+ //     src: '/resimler/slider3.svg',
+ //     alt: 'Merkez Teknik Metal - Görsel 3'
+ //   },
     {
-      type: 'image',
-      src: '/resimler/slider2.jpeg',
-      alt: 'Merkez Teknik Metal - Görsel 2'
-    },
-    {
-      type: 'image',
-      src: '/resimler/slider3.jpeg',
-      alt: 'Merkez Teknik Metal - Görsel 3'
-    },
-    {
-      type: 'image',
-      src: '/resimler/slider4.jpg',
-      alt: 'Merkez Teknik Metal - Görsel 4'
-    }
+     type: 'image',
+      src: '/resimler/slider4.svg',
+     alt: 'Merkez Teknik Metal - Görsel 4'
+   }
     // Video eklemek için:
     // {
     //   type: 'video',
@@ -97,9 +97,9 @@ const MediaSlider = () => {
   };
 
   return (
-    <section className="relative bg-gray-900 overflow-hidden h-screen w-full">
-      {/* Slider Container - Fullscreen */}
-      <div className="relative h-screen w-full">
+    <section className="relative bg-gray-900 overflow-hidden w-full">
+      {/* Slider Container - 16:9 Aspect Ratio */}
+      <div className="relative w-full aspect-video max-h-screen">
         {/* Slides */}
         {slides.map((slide, index) => (
           <div
@@ -110,25 +110,15 @@ const MediaSlider = () => {
           >
             {/* Render Image or Video */}
             {slide.type === 'image' ? (
-              <>
-                {/* Blur arka plan */}
-                <img
-                  src={slide.src}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-50"
-                  aria-hidden="true"
-                />
-                {/* Ana görsel - ortalanmış */}
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  className="relative w-full h-full object-contain"
-                  onError={(e) => {
-                    // Fallback: resim bulunamazsa placeholder göster
-                    e.target.src = 'https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&cs=tinysrgb&w=1920';
-                  }}
-                />
-              </>
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback: resim bulunamazsa placeholder göster
+                  e.target.src = 'https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                }}
+              />
             ) : (
               <video
                 src={slide.src}
@@ -161,16 +151,16 @@ const MediaSlider = () => {
                   </div>
 
                   {/* Main Headline */}
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight uppercase tracking-wide">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight uppercase tracking-wide">
                     ADR Araç Muayene ve Tamirat Merkezi
                   </h1>
 
                   {/* Orange Line */}
-                  <div className="h-1 w-32 bg-orange-500 mb-8"></div>
+                  <div className="h-1 w-24 bg-orange-500 mb-6"></div>
 
                   {/* Subheadline */}
                   <p
-                    className={`text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed max-w-3xl transition-all duration-1000 delay-300 ${
+                    className={`text-base sm:text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl transition-all duration-1000 delay-300 ${
                       isVisible
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-10'
@@ -190,13 +180,13 @@ const MediaSlider = () => {
                   >
                     <button
                       onClick={handleButtonClick}
-                      className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 text-lg transition-all duration-300 uppercase tracking-wider"
+                      className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 text-base md:text-lg transition-all duration-300 uppercase tracking-wider"
                     >
                       HİZMETLERİMİZ
                     </button>
                     <Link
                       to="/adr-muayene"
-                      className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-8 py-4 text-lg transition-all duration-300 uppercase tracking-wider text-center"
+                      className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-6 py-3 text-base md:text-lg transition-all duration-300 uppercase tracking-wider text-center"
                     >
                       ADR MUAYENE
                     </Link>
