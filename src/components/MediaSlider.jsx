@@ -11,7 +11,7 @@ const MediaSlider = () => {
   const slides = [
     {
       type: 'image', // 'image' veya 'video'
-      src: '/resimler/slider1.jpeg',
+      src: '/resimler/slider1.svg',
       alt: 'Merkez Teknik Metal - Görsel 1'
     },
     {
@@ -110,15 +110,25 @@ const MediaSlider = () => {
           >
             {/* Render Image or Video */}
             {slide.type === 'image' ? (
-              <img
-                src={slide.src}
-                alt={slide.alt}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  // Fallback: resim bulunamazsa placeholder göster
-                  e.target.src = 'https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&cs=tinysrgb&w=1920';
-                }}
-              />
+              <>
+                {/* Blur arka plan */}
+                <img
+                  src={slide.src}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-50"
+                  aria-hidden="true"
+                />
+                {/* Ana görsel - ortalanmış */}
+                <img
+                  src={slide.src}
+                  alt={slide.alt}
+                  className="relative w-full h-full object-contain"
+                  onError={(e) => {
+                    // Fallback: resim bulunamazsa placeholder göster
+                    e.target.src = 'https://images.pexels.com/photos/1416530/pexels-photo-1416530.jpeg?auto=compress&cs=tinysrgb&w=1920';
+                  }}
+                />
+              </>
             ) : (
               <video
                 src={slide.src}
