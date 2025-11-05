@@ -49,7 +49,7 @@ const ADRMuayenePage = () => {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="relative group overflow-hidden border-4 border-gray-800">
             <img
-              src="/adr-truck.jpg"
+              src="/resimler/muayene.svg"
               alt="ADR Tehlikeli Madde Taşıyan Araç"
               className="w-full h-[400px] object-cover"
             />

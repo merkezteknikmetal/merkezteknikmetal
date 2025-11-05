@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const MediaSlider = () => {
+const MediaSlider = ({ compact = false }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
@@ -14,21 +14,22 @@ const MediaSlider = () => {
       src: '/resimler/slider1.svg',
       alt: 'Merkez Teknik Metal - Görsel 1'
     },
-  //  {
-  //    type: 'image',
-  //      src: '/resimler/slider2.svg',
-  //    alt: 'Merkez Teknik Metal - Görsel 2'
-  //  },
- //   {
- //     type: 'image',
- //     src: '/resimler/slider3.svg',
- //     alt: 'Merkez Teknik Metal - Görsel 3'
- //   },
     {
-     type: 'image',
-      src: '/resimler/slider4.svg',
-     alt: 'Merkez Teknik Metal - Görsel 4'
-   }
+      type: 'image', // 'image' veya 'video'
+      src: '/resimler/slider2.svg',
+      alt: 'Merkez Teknik Metal - Görsel 2'
+    }
+   ,   {
+    type: 'image', // 'image' veya 'video'
+    src: '/resimler/slider3.svg',
+    alt: 'Merkez Teknik Metal - Görsel 3'
+  }
+ 
+ 
+ 
+   
+ 
+  
     // Video eklemek için:
     // {
     //   type: 'video',
@@ -97,9 +98,9 @@ const MediaSlider = () => {
   };
 
   return (
-    <section className="relative bg-gray-900 overflow-hidden w-full">
-      {/* Slider Container - 16:9 Aspect Ratio */}
-      <div className="relative w-full aspect-video max-h-screen">
+    <section className={`relative bg-gray-900 overflow-hidden w-full ${compact ? '' : ''}`}>
+      {/* Slider Container - Compact mode için daha uzun */}
+      <div className={`relative w-full ${compact ? 'aspect-[3/4] min-h-[600px]' : 'aspect-video max-h-screen'}`}>
         {/* Slides */}
         {slides.map((slide, index) => (
           <div
@@ -132,11 +133,11 @@ const MediaSlider = () => {
             
             {/* Subtle dark overlay - çok hafif */}
             <div className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === 0 ? 'bg-gradient-to-b from-gray-900/70 via-gray-900/60 to-gray-900/80' : 'bg-black/10'
+              index === 0 && !compact ? 'bg-gradient-to-b from-gray-900/70 via-gray-900/60 to-gray-900/80' : 'bg-black/10'
             }`}></div>
             
-            {/* Hero Yazıları - Sadece ilk slide'da (index === 0) */}
-            {index === 0 && (
+            {/* Hero Yazıları - Sadece ilk slide'da ve compact değilse */}
+            {index === 0 && !compact && (
               <div className="absolute inset-0 z-20 flex items-center justify-center px-4 sm:px-6 lg:px-8">
                 <div
                   className={`max-w-5xl transition-all duration-1000 transform ${
