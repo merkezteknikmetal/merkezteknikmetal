@@ -99,8 +99,8 @@ const MediaSlider = ({ compact = false }) => {
 
   return (
     <section className={`relative bg-gray-900 overflow-hidden w-full ${compact ? '' : ''}`}>
-      {/* Slider Container - Compact mode için daha uzun */}
-      <div className={`relative w-full ${compact ? 'aspect-[3/4] min-h-[600px]' : 'aspect-video max-h-screen'}`}>
+      {/* Slider Container - Responsive */}
+      <div className={`relative w-full ${compact ? 'aspect-[3/4] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]' : 'aspect-video max-h-screen'}`}>
         {/* Slides */}
         {slides.map((slide, index) => (
           <div
@@ -198,47 +198,53 @@ const MediaSlider = ({ compact = false }) => {
           </div>
         ))}
 
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 bg-black/40 backdrop-blur-sm hover:bg-orange-500 text-white p-3 md:p-4 transition-all duration-300 group"
-          aria-label="Önceki"
-        >
-          <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
+        {/* Navigation Arrows - Compact modda gizli */}
+        {!compact && (
+          <>
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 bg-black/40 backdrop-blur-sm hover:bg-orange-500 text-white p-2 sm:p-3 md:p-4 transition-all duration-300 group"
+              aria-label="Önceki"
+            >
+              <svg className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 bg-black/40 backdrop-blur-sm hover:bg-orange-500 text-white p-3 md:p-4 transition-all duration-300 group"
-          aria-label="Sonraki"
-        >
-          <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 bg-black/40 backdrop-blur-sm hover:bg-orange-500 text-white p-2 sm:p-3 md:p-4 transition-all duration-300 group"
+              aria-label="Sonraki"
+            >
+              <svg className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </>
+        )}
 
         {/* Dots Navigation */}
-        <div className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2 md:gap-3 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+        <div className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 sm:gap-2 md:gap-3 bg-black/30 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
               className={`transition-all duration-300 rounded-full ${
                 index === currentSlide
-                  ? 'w-10 md:w-12 h-3 bg-orange-500 shadow-lg'
-                  : 'w-3 h-3 bg-white/60 hover:bg-white/90'
+                  ? 'w-6 sm:w-8 md:w-10 lg:w-12 h-2 sm:h-2.5 md:h-3 bg-orange-500 shadow-lg'
+                  : 'w-2 sm:w-2.5 md:w-3 h-2 sm:h-2.5 md:h-3 bg-white/60 hover:bg-white/90'
               }`}
               aria-label={`Slayt ${index + 1}`}
             />
           ))}
         </div>
 
-        {/* Slide Counter - Minimal */}
-        <div className="absolute top-4 md:top-6 right-4 md:right-6 z-30 bg-black/40 backdrop-blur-sm text-white px-3 md:px-4 py-1 md:py-2 text-xs md:text-sm font-bold rounded-full">
-          {currentSlide + 1} / {slides.length}
-        </div>
+        {/* Slide Counter - Compact modda gizli */}
+        {!compact && (
+          <div className="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 z-30 bg-black/40 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 text-xs md:text-sm font-bold rounded-full">
+            {currentSlide + 1} / {slides.length}
+          </div>
+        )}
       </div>
     </section>
   );
